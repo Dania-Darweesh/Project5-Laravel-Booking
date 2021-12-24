@@ -20,4 +20,4 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('admin.index');
 });
-Route::get('/test',[RoomController::class,'test']);
+Route::get('/test', [RoomController::class, 'test']);
