@@ -35,6 +35,7 @@ return array(
     'App\\Http\\Requests\\UpdateroomRequest' => $baseDir . '/app/Http/Requests/UpdateroomRequest.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\Meal' => $baseDir . '/app/Models/Meal.php',
+    'App\\Models\\Review' => $baseDir . '/app/Models/Review.php',
     'App\\Models\\Role' => $baseDir . '/app/Models/Role.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\UserReservation' => $baseDir . '/app/Models/UserReservation.php',

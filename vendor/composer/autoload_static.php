@@ -545,6 +545,7 @@ class ComposerStaticInit498af182f67674998054def98cc06523
         'App\\Http\\Requests\\UpdateroomRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateroomRequest.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Meal' => __DIR__ . '/../..' . '/app/Models/Meal.php',
+        'App\\Models\\Review' => __DIR__ . '/../..' . '/app/Models/Review.php',
         'App\\Models\\Role' => __DIR__ . '/../..' . '/app/Models/Role.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\UserReservation' => __DIR__ . '/../..' . '/app/Models/UserReservation.php',
