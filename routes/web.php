@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('pages.index-2');
+    return view('pages.index');
 });
 Route::get('/admin', function () {
     return view('admin.index');
 });
-
+Route::get('/test',[RoomController::class,'test']);
