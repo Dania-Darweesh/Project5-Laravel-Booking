@@ -23,6 +23,7 @@ class CreateRoomsTable extends Migration
             $table->boolean('has_sea_view');
             $table->boolean('status');
             $table->string('room_img');
+            $table->text('room_description');
         });
     }
 

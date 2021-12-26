@@ -8,14 +8,10 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $review = Review::all();
+        return view('admin.Review.viewReview', compact('review'));
     }
 
     /**
@@ -25,7 +21,7 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        //
+        // return view('admin.Review.createReview');
     }
 
     /**
@@ -36,7 +32,16 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $review= new Review();
+        $review->review_title = $request->review_title;
+        $review->review_body = $request->review_body;
+        $review->user_id = $request->user_id;
+        $review->meal_id = $request->meal_id;
+        $review->save();
+
+
+
+        return redirect()->route('single-meal',['id'=>1]);
     }
 
     /**
@@ -79,8 +84,11 @@ class ReviewController extends Controller
      * @param  \App\Models\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Review $review)
+    public function destroy($id)
     {
-        //
+        $delete_operation = Review::find($id);
+        $delete_operation->destroy($id);
+
+        return redirect()->route('review.index');
     }
 }

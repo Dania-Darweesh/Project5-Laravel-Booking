@@ -59,6 +59,8 @@
     <!-- responsive CSS
 		============================================ -->
     <link rel="stylesheet" href="{{asset('admin_styles/css/responsive.css')}}">
+    <!--Icon!-->
+    <link rel="stylesheet" href="{{asset('css/ionicons.min.css')}}">
     <!-- modernizr JS
 		============================================ -->
     <script src="{{asset('admin_styles/js/vendor/modernizr-2.8.3.min.js')}}"></script>
