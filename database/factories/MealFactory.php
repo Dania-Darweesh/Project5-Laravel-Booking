@@ -14,7 +14,10 @@ class MealFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name'=> $this->faker->name,
+            'price' => 50,
+            'description' =>$this->faker->text ,
+            'meal_img' =>$this->faker->imageUrl,
         ];
     }
 }

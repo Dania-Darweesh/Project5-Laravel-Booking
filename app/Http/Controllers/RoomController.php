@@ -95,4 +95,6 @@ class RoomController extends Controller
         $room->category_id=2;
         $room->save();
     }
+    
+
 }

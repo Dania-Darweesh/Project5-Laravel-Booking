@@ -5790,7 +5790,7 @@ button.bg-dark:focus {
 .align-items-end {
   -webkit-box-align: end !important;
   -ms-flex-align: end !important;
-  align-items: flex-end !important; }
+  align-items: center !important; }
 
 .align-items-center {
   -webkit-box-align: center !important;
@@ -8320,7 +8320,7 @@ h1, h2, h3, h4, h5,
 
 .hero-wrap {
   width: 100%;
-  height: 750px;
+  height: 500px;
   position: relative; }
   .hero-wrap .overlay {
     position: absolute;
@@ -8330,7 +8330,7 @@ h1, h2, h3, h4, h5,
     bottom: 0;
     content: '';
     opacity: .6;
-    background: #2f89fc; }
+    background:#4394FC; }
   .hero-wrap .slider-text {
     color: #fff;
     height: 750px; }

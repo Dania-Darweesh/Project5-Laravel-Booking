@@ -10,6 +10,9 @@ class room extends Model
     use HasFactory;
     public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
+
+
+        
         return $this->belongsTo(Category::class);
     }
 

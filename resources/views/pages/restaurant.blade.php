@@ -54,7 +54,10 @@
           </div>
         </div>
 				<div class="row">
+					
+					
         	<div class="col-lg-6 col-xl-6 d-flex">
+				<a href="{{route('single-meal',['id'=>1] )}}">
         		<div class="pricing-entry rounded d-flex ftco-animate">
         			<div class="img" style="background-image: url(images/menu-1.jpg);"></div>
         			<div class="desc p-4">
@@ -67,7 +70,9 @@
 	        			</div>
         			</div>
         		</div>
+			</a>
         	</div>
+		
         	<div class="col-lg-6 col-xl-6 d-flex">
         		<div class="pricing-entry rounded d-flex ftco-animate">
         			<div class="img" style="background-image: url(images/menu-2.jpg);"></div>

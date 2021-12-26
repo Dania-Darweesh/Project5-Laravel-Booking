@@ -13,13 +13,7 @@
                             <span class="educate-icon educate-home icon-wrap"></span>
                             <span class="mini-click-non">Dashboard</span>
                         </a>
-                        <ul class="submenu-angle" aria-expanded="true">
-
-                            <li><a title="Dashboard v.2" href="index.html"><span class="mini-sub-pro">Dashboard v.2</span></a></li>
-
-                            <li><a title="Analytics" href="analytics.html"><span class="mini-sub-pro">Analytics</span></a></li>
-
-                        </ul>
+                        
                     </li>
                     <li>
                         <a title="Landing Page" href="events.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Event</span></a>
@@ -29,7 +23,7 @@
 
                     </li>
                     <li>
-                        <a  href="all-students.html" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Categories</span></a>
+                        <a  href="{{route('category.index')}}" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Categories</span></a>
 
                     </li>
                     <li>
@@ -45,7 +39,7 @@
 
                     </li>
                     <li>
-                        <a  href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-message icon-wrap"></span> <span class="mini-click-non">Reviews</span></a>
+                        <a  href="{{route('review.index')}}" aria-expanded="false"><span class="educate-icon educate-message icon-wrap"></span> <span class="mini-click-non">Reviews</span></a>
 
                     </li>
 

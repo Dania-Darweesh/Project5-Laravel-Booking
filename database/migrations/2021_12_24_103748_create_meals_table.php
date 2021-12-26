@@ -19,7 +19,8 @@ class CreateMealsTable extends Migration
             $table->string('name');
             $table->string('price');
             $table->string('description');
-            $table->string('meal_img');
+            $table->string('meal_img')->nullable();
+            
 
         });
     }
