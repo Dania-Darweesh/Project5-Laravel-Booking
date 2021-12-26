@@ -1,9 +1,9 @@
 @extends('admin/includes/master')
 @section('content')
 
-<div class="traffice-source-area mg-b-30 m-auto" style="width: 87vw;padding: 1%;padding-top: 2%!important;">
+<div class="traffice-source-area mg-b-30 m-auto" style="width: 80vw !important;padding: 1%;padding-top: 2%!important;">
     <div class="white-box">
-    <h1>Welcome user</h1>
+    <h1>Welcome {{$user->name}}</h1>
     <p>Here is all the statistics you need for the website</p>
 </div>
 </div>

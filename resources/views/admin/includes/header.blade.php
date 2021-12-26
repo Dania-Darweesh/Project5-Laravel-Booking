@@ -64,4 +64,5 @@
     <!-- modernizr JS
 		============================================ -->
     <script src="{{asset('admin_styles/js/vendor/modernizr-2.8.3.min.js')}}"></script>
+
 </head>

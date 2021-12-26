@@ -11,6 +11,7 @@ use App\Models\Review;
 use App\Models\room;
 use App\Models\User;
 use App\Models\UserReservation;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,13 +25,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/admin/users', UserController::class);
-Route::resource('/admin/categories', CategoryController::class);
-Route::resource("/admin/rooms", RoomController::class);
-Route::resource('/admin/userReservation', UserReservationController::class);
-Route::resource('/admin/meals', MealController::class);
-Route::resource('/admin/category', CategoryController::class);
-Route::resource('/admin/review', ReviewController::class);
+Route::resource('/admin/users', UserController::class)->middleware('super_admin.auth');
+Route::resource('/admin/categories', CategoryController::class)->middleware('admin.auth');
+Route::resource("/admin/rooms", RoomController::class)->middleware('admin.auth');
+Route::resource('/admin/userReservation', UserReservationController::class)->middleware('admin.auth');
+Route::resource('/admin/meals', MealController::class)->middleware('admin.auth');
+Route::resource('/admin/category', CategoryController::class)->middleware('admin.auth');
+Route::resource('/admin/review', ReviewController::class)->middleware('admin.auth');
 Route::get('/admin', function () {
 
 
@@ -41,20 +42,26 @@ Route::get('/admin', function () {
         'number_of_users'=>user::where('role_id',1)->count(),
         'number_of_reservations'=>UserReservation::count(),
         'number_of_reviews'=>Review::count(),
+        'user'=>Auth::user(),
 
     ]);
-})->name('admin.dashboard');
+})->name('admin.dashboard')->middleware('admin.auth');
 
 
 
 
 
-Route::get('/', function () {
-    return view('pages.index',[
-        'categories'=>Category::all(),
-    ]);
-});
 
 Route::get('/categories', [RoomController::class,'show_room_from_specific_category'])->name('public.showRoom');
 Route::post('/rooms', [UserReservationController::class,'available_rooms'])->name('public.availableRooms');
 
+Route::get('/signupTheme',function(){
+    return view('pages.signup');
+});
+Route::get('/loginTheme',function(){
+    return view('pages.login');
+});
+
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

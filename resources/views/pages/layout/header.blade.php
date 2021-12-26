@@ -30,7 +30,14 @@
     <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
     <link rel="stylesheet" href="{{asset('css/icomoon.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-  </head>
+    <!-- dania's-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" />
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="{{asset('css/loginstyle.css')}}" />
+
+</head>
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -48,6 +55,14 @@
 	          <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
 	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
 	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+	          <li class="nav-item"><a href="contact.html" class="nav-link">
+                      @auth
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
+                              <button class="btn btn-sm btn-outline-info  text-white" type="submit">Log out</button>
+                              @csrf
+                          </form>
+                      @endauth</a></li>
+
 	        </ul>
 	      </div>
 	    </div>

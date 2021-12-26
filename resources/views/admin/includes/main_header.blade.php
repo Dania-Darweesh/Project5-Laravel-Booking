@@ -22,22 +22,27 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-11 col-md-8 col-sm-12 col-xs-12">
+                            <div class="col-lg-10 col-md-8 col-sm-12 col-xs-12">
                                 <div class="header-right-info">
                                     <ul class="nav navbar-nav mai-top-nav header-right-menu">
 
 
-                                        <li class="nav-item mx-5">
+                                        <li class="nav-item ">
                                             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
 
-                                                <span class="admin-name">Prof.Anderson</span>
+                                                <span class="admin-name">{{$user->name}}</span>
                                                 <i class="ion-ios-person-add"></i>
                                             </a>
                                             <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
 
                                                 <li><a href="#"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a>
                                                 </li>
-                                                <li><a href="#"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
+                                                <li><a href="#"><span class="edu-icon edu-locked author-log-ic"></span> @auth
+                                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
+                                                                <button class="btn btn-primary btn-outline-info  text-white" type="submit">Log out</button>
+                                                                @csrf
+                                                            </form>
+                                                        @endauth</a></li></a>
                                                 </li>
                                             </ul>
                                         </li>
