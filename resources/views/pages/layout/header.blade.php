@@ -49,8 +49,8 @@
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="index-2.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="rooms.html" class="nav-link">Our Rooms</a></li>
+	          <li class="nav-item active"><a href="{{route('home')}}" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="{{route('public.showAllRooms')}}" class="nav-link">Our Rooms</a></li>
 	          <li class="nav-item"><a href="restaurant.html" class="nav-link">Restaurant</a></li>
 	          <li class="nav-item" style="margin-top: 20px!important;">
                       @auth

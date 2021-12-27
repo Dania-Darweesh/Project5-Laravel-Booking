@@ -9,9 +9,7 @@ class room extends Model
 {
     protected $fillable = ['category_name', 'number_of_beds','price','has_balcony', 'has_sea_view' , 'status' , 'room_img' ,'room_description'];
 
-    public static function where(string $string, $id)
-    {
-    }
+
 
     use HasFactory;
     public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo

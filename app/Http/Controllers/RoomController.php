@@ -130,14 +130,16 @@ class RoomController extends Controller
             //show all the room associated with a specific category ,and it's not booked.
             //we should bring back the status of the room to 0 after checkout
             $rooms= Room::all()
-                        ->where('category_id',$res['category_id'])
-                         ->where('status',0);
+                        ->where('category_id',$res['category_id']);
+
 
             return view("pages.rooms",[
                 'rooms'=>$rooms,
+                'available'=>false,
             ]);
 
         }
+
 
 
     }
@@ -145,5 +147,15 @@ class RoomController extends Controller
     {  $room = room::find($request-> id );
         $categories = Category::all();
         return view('pages.rooms-single',compact('room' ,'categories'));
+    }
+    public function show_all_available_rooms(Request $request){
+        $rooms=Room::all();
+        return view('pages.rooms',[
+           'rooms'=>$rooms,
+           'available'=>$request->available,
+        ]);
+
+
+
     }
 }

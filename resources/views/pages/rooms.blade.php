@@ -35,6 +35,7 @@
     							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
     							<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
 	    						<h3 class="mb-3"><span class="per mx-2">category</span><a href="rooms.html">{{$room->category->category_name}}</a></h3>
+                                <small class="{{$room->status?'text-danger':'text-success'}} font-weight-bold">{{$room->status?'booked':'available'}}</small>
                                 <div class="d-flex justify-content-around">
                                     @if($room->has_sea_view)
                                         <span class="ion-ios-checkmark-circle-outline text-primary h1  position-relative"><span class="h6 text-dark" style="position: absolute;top: 30%;">Sea View</span></span>
@@ -48,7 +49,9 @@
                                     <span class="ion-ios-close-circle-outline h1  position-relative"><span class="h6" style="position: absolute;top: 30%;">Balcony</span></span>
                                         @endif
                                 </div>
-	    						<p class="pt-1"><a href="{{route("public.singleRoom" , ['id'=>$room->id])}}" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
+	    						<p class="pt-1"><a href="
+                                                    {{route("public.singleRoom" , ['id'=>$room->id,'available'=>$available])}}"
+                                                   class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
     						</div>
     					</div>
     				</div>
