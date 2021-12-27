@@ -43,7 +43,6 @@ class ReviewController extends Controller
         $review->save();
 
 
-
         return redirect()->route('single-meal',['id'=>1]);
     }
 

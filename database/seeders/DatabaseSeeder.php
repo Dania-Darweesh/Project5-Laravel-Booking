@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-      // \App\Models\User::factory(10)->create();
+      \App\Models\User::factory(10)->create();
         //Admin User
        /* User::create([
            'name'=>'Awni',
@@ -49,6 +49,27 @@ class DatabaseSeeder extends Seeder
              'role_id'=>1
 
          ]);
+        // User::create([
+        //     'name'=>'Osaid',
+        //     'email'=>'Osaidgh@gmail.com',
+        //     'password'=>Hash::make('Osaid@1999'),
+        //     'role_id'=>3
+
+        // ]);
+        // User::create([
+        //     'name'=>'Osaid',
+        //     'email'=>'Osaid@gmail.com',
+        //     'password'=>Hash::make('Osaid@1999'),
+        //     'role_id'=>2
+
+        // ]);
+        // User::create([
+        //     'name'=>'Leen',
+        //      'email'=>'leen@gmail.com',
+        //          'password'=>Hash::make('Leen23@2000'),
+        //      'role_id'=>1
+
+        //  ]);
 
 
 

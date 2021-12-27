@@ -13,7 +13,6 @@
                             <span class="ion-ios-home icon-wrap"></span>
                             <span class="mini-click-non">Dashboard</span>
                         </a>
-
                     </li>
 
                     <li>

@@ -326,92 +326,38 @@
           </div>
         </div>
 				<div class="row">
+					{{-- foreach **************** --}}
+
+					
+
+
+
+					@foreach ($meals as $item)
+					
         	<div class="col-lg-6 col-xl-4 d-flex">
+				
+				<a href="{{route('single-meal',['id'=>$item->id])}}">
         		<div class="pricing-entry rounded d-flex ftco-animate">
-        			<div class="img" style="background-image: url(images/menu-1.jpg);"></div>
+        			<div class="img" style="background-image: url({{$item->meal_img}});"></div>
         			<div class="desc p-4">
 	        			<div class="d-md-flex text align-items-start">
-	        				<h3><span>Grilled Crab with Onion</span></h3>
-	        				<span class="price">$20.00</span>
+	        				<h3><span>{{$item->name}}</span></h3>
+	        				<span class="price">${{$item->price}}</span>
 	        			</div>
 	        			<div class="d-block">
-	        				<p>A small river named Duden flows by their place and supplies</p>
+	        				<p>{{$item->description}}</p>
 	        			</div>
         			</div>
         		</div>
+			</a>
+
         	</div>
-        	<div class="col-lg-6 col-xl-4 d-flex">
-        		<div class="pricing-entry rounded d-flex ftco-animate">
-        			<div class="img" style="background-image: url(images/menu-2.jpg);"></div>
-        			<div class="desc p-4">
-	        			<div class="d-md-flex text align-items-start">
-	        				<h3><span>Grilled Crab with Onion</span></h3>
-	        				<span class="price">$20.00</span>
-	        			</div>
-	        			<div class="d-block">
-	        				<p>A small river named Duden flows by their place and supplies</p>
-	        			</div>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-lg-6 col-xl-4 d-flex">
-        		<div class="pricing-entry rounded d-flex ftco-animate">
-        			<div class="img" style="background-image: url(images/menu-3.jpg);"></div>
-        			<div class="desc p-4">
-	        			<div class="d-md-flex text align-items-start">
-	        				<h3><span>Grilled Crab with Onion</span></h3>
-	        				<span class="price">$20.00</span>
-	        			</div>
-	        			<div class="d-block">
-	        				<p>A small river named Duden flows by their place and supplies</p>
-	        			</div>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-lg-6 col-xl-4 d-flex">
-        		<div class="pricing-entry rounded d-flex ftco-animate">
-        			<div class="img" style="background-image: url(images/menu-4.jpg);"></div>
-        			<div class="desc p-4">
-	        			<div class="d-md-flex text align-items-start">
-	        				<h3><span>Grilled Crab with Onion</span></h3>
-	        				<span class="price">$20.00</span>
-	        			</div>
-	        			<div class="d-block">
-	        				<p>A small river named Duden flows by their place and supplies</p>
-	        			</div>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-lg-6 col-xl-4 d-flex">
-        		<div class="pricing-entry rounded d-flex ftco-animate">
-        			<div class="img" style="background-image: url(images/menu-5.jpg);"></div>
-        			<div class="desc p-4">
-	        			<div class="d-md-flex text align-items-start">
-	        				<h3><span>Grilled Crab with Onion</span></h3>
-	        				<span class="price">$20.00</span>
-	        			</div>
-	        			<div class="d-block">
-	        				<p>A small river named Duden flows by their place and supplies</p>
-	        			</div>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-lg-6 col-xl-4 d-flex">
-        		<div class="pricing-entry rounded d-flex ftco-animate">
-        			<div class="img" style="background-image: url(images/menu-6.jpg);"></div>
-        			<div class="desc p-4">
-	        			<div class="d-md-flex text align-items-start">
-	        				<h3><span>Grilled Crab with Onion</span></h3>
-	        				<span class="price">$20.00</span>
-	        			</div>
-	        			<div class="d-block">
-	        				<p>A small river named Duden flows by their place and supplies</p>
-	        			</div>
-        			</div>
-        		</div>
-        	</div>
+			
+			@endforeach
+
+        	{{-- *********** --}}
         	<div class="col-md-12 text-center ftco-animate">
-        		<p><a href="#" class="btn btn-primary rounded">View All Menu</a></p>
+        		<p><a href="{{route('restaurant')}}" class="btn btn-primary rounded">View All Menu</a></p>
         	</div>
         </div>
 			</div>

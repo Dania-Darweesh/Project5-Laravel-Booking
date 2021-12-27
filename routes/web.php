@@ -10,10 +10,13 @@ use App\Http\Controllers\UserReservationController;
 use App\Models\Category;
 use App\Models\Review;
 use App\Models\room;
+use App\Models\Meal;
 use App\Models\User;
 use App\Models\UserReservation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Resource_;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +53,8 @@ Route::get('/admin', function () {
 
 
 
-
+//Osaid
+Route::post('/saveReview', [ReviewController::class,'store'])->name('public.storeReview');
 
 
 Route::get('/categories', [RoomController::class,'show_room_from_specific_category'])->name('public.showRoom');
@@ -66,8 +70,33 @@ Route::post('/book',[UserReservationController::class,'store'])->name('book_now'
 Route::get('/signupTheme',function(){
     return view('pages.signup');
 });
-Route::get('/loginTheme',function(){
-    return view('pages.login');
+
+
+// we need to change the url
+
+Route::get('/pages/restaurant-single', function (Meal $id,Request $request) {
+    // dd('helllllllllllo');
+  
+    $meal    = Meal::find($request->id);
+    $reviews = Review::where('meal_id', $request->id)->get();
+
+    return view('pages.restaurant-single',[
+
+        'meal'   => $meal ,
+        'reviews'=> $reviews 
+
+    ]);
+
+})->name('single-meal');
+
+
+Route::get('/pages/restaurant', function () {
+    $meals = Meal::all();
+    return view('pages.restaurant',['meals'=>$meals]);
+})->name('restaurant');
+
+Route::get('/pages/rooms-single', function () {
+    return view('pages.rooms-single');
 });
 
 Auth::routes();

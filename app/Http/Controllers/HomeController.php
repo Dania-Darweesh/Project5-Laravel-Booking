@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Meal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use MongoDB\Driver\Session;
@@ -35,6 +36,7 @@ class HomeController extends Controller
 
         return  view('pages.index',[
             'categories'=>Category::all(),
+            'meals'=>Meal::take(6)->get() ,
         ]);
 
 

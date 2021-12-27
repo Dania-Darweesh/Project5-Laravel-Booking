@@ -60,7 +60,7 @@
     ============================================ -->
 
 
-</script><script src="{{asset('admin_styles/js/customScript.js')}}"></script>
+<script src="{{asset('admin_styles/js/customScript.js')}}"></script>
 </body>
 
 </html>

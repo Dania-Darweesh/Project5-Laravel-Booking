@@ -13,6 +13,7 @@ class MealSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\Meal::factory(10)->create();
+
     }
 }
