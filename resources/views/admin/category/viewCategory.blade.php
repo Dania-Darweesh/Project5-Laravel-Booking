@@ -28,12 +28,12 @@
                                         <td> {{$item->category_name}}</td>
 
                                         <td>
-                                            <form action="{{route('users.destroy',$item->id)}}" method="post">
-                                                <a href="{{route('users.edit',$item->id)}}" data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                            <form action="{{route('categories.destroy',$item->id)}}" method="post">
+                                                <a href="{{route('categories.edit',$item->id)}}" data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 
                                                 @csrf
                                                 @method('Delete')
-                                                <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                                <button data-toggle="tooltip" type="submit" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                             </form>
                                         </td>
                                     </tr>

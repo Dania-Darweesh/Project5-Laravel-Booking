@@ -6,6 +6,7 @@ use App\Models\Meal;
 use App\Http\Requests\StoreMealRequest;
 use App\Http\Requests\UpdateMealRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MealController extends Controller
 {
@@ -13,25 +14,28 @@ class MealController extends Controller
     {
         //
         $meals = Meal::all();
-        return view('admin.meal.index', compact('meals'));
+        return view('admin.meal.index',[
+            'meals'=>$meals,
+            'auth_user'=>Auth::user(),
+        ]);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+
      */
     public function create()
     {
         //
-        return view('admin.meal.create');
+        return view('admin.meal.create',[
+            'auth_user'=>Auth::user(),
+            ]
+        );
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreMealRequest  $request
-     * @return \Illuminate\Http\Response
+     *
      */
     public function store(Request $request)
     {
@@ -50,7 +54,7 @@ class MealController extends Controller
 
         ]);
 
-        return redirect()->back();
+        return redirect()->route('meal.index');
     }
 
 
@@ -69,22 +73,22 @@ class MealController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Meal  $meal
-     * @return \Illuminate\Http\Response
+     *
      */
     public function edit($id)
     {
         //
         $mealEdit = Meal::find($id);
-        return view('admin.meal.edit', compact('mealEdit'));
+        return view('admin.meal.edit', [
+            'mealEdit'=>$mealEdit,
+            'auth_user'=>Auth::user(),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateMealRequest  $request
-     * @param  \App\Models\Meal  $meal
-     * @return \Illuminate\Http\Response
+     *
      */
     public function update(Request $request, $id)
     {
@@ -111,8 +115,7 @@ class MealController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Meal  $meal
-     * @return \Illuminate\Http\Response
+
      */
     public function destroy($id)
     {

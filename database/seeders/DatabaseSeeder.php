@@ -18,11 +18,21 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
       // \App\Models\User::factory(10)->create();
-        User::create([
+        //Admin User
+       /* User::create([
            'name'=>'Awni',
             'email'=>'Awni@gmail.com',
                 'password'=>Hash::make('Awni@1998'),
             'role_id'=>2
+
+        ]);*/
+
+        //Super Admin User
+        User::create([
+            'name'=>'Osaid',
+            'email'=>'Osaid@gmail.com',
+            'password'=>Hash::make('Osaid@1999'),
+            'role_id'=>3
 
         ]);
         User::create([
@@ -32,6 +42,7 @@ class DatabaseSeeder extends Seeder
              'role_id'=>1
  
          ]);
+
 
 
 

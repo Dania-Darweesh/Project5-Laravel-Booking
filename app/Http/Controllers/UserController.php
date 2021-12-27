@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -20,7 +21,8 @@ class UserController extends Controller
         //
 
         return view('admin.users.index',[
-            'users'=>User::all()->sortByDesc('role_id'),
+            'users'=>User::all()->sortByDesc('role_id')->whereNotIn('id',Auth::user()->id),
+            'auth_user'=>Auth::user(),
         ]);
     }
 
@@ -34,6 +36,7 @@ class UserController extends Controller
 
         return view('admin.users.create',[
             'roles'=>Role::all(),
+            'auth_user'=>Auth::user(),
         ]);
 
     }
@@ -58,6 +61,10 @@ class UserController extends Controller
         $user->email=$request->email;
         $user->role_id=$request->role_id;
         $user->save();
+        return view('admin.users.index',[
+            'users'=>User::all()->sortByDesc('role_id'),
+            'auth_user'=>Auth::user(),
+        ]);
 
 
 
@@ -85,6 +92,8 @@ class UserController extends Controller
         return view("admin.users.edit",[
             'user'=>user::find($id),
             'roles'=>Role::all(),
+            'auth_user'=>Auth::user(),
+
         ]);
     }
 
