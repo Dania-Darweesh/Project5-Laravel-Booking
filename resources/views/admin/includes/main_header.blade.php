@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="logo-pro">
-                <a href="index.html"><img class="main-logo" src="{{asset('admin_styles/img/logo/logo.png')}}" alt="" /></a>
+                <a href="{{route('admin.dashboard')}}"><img class="main-logo" src="{{asset('admin_styles/img/logo/logo.png')}}" alt="" /></a>
             </div>
         </div>
     </div>
@@ -30,7 +30,7 @@
                                         <li class="nav-item ">
                                             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
 
-                                                <span class="admin-name">{{$user->name}}</span>
+                                                <span class="admin-name">{{$auth_user->name}}</span>
                                                 <i class="ion-ios-person-add"></i>
                                             </a>
                                             <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">

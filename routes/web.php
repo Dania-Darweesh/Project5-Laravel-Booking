@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MealController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\RoomController;
@@ -42,7 +43,7 @@ Route::get('/admin', function () {
         'number_of_users'=>user::where('role_id',1)->count(),
         'number_of_reservations'=>UserReservation::count(),
         'number_of_reviews'=>Review::count(),
-        'user'=>Auth::user(),
+        'auth_user'=>Auth::user(),
 
     ]);
 })->name('admin.dashboard')->middleware('admin.auth');
@@ -64,4 +65,4 @@ Route::get('/loginTheme',function(){
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');

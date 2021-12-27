@@ -18,7 +18,7 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        $name= Auth::user()->role->name;
+        $name= Auth::user()->role->name?? null;
         if ($name==="admin" || $name==="super_admin") {
 
             return $next($request);

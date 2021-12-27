@@ -7,6 +7,7 @@ use App\Models\UserReservation;
 use App\Http\Requests\StoreUserReservationRequest;
 use App\Http\Requests\UpdateUserReservationRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class UserReservationController extends Controller
@@ -15,18 +16,23 @@ class UserReservationController extends Controller
     {
         //
         $shows = UserReservation::all();
-        return view('admin.userReservation.show', compact('shows'));
+        return view('admin.userReservation.show',[
+            'shows'=>$shows,
+            'auth_user'=>Auth::user(),
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     *
      */
     public function create()
     {
         //
-        return view('admin.userReservation.create');
+        return view('admin.userReservation.create',[
+            'auth_user'=>Auth::user(),
+        ]);
     }
 
 

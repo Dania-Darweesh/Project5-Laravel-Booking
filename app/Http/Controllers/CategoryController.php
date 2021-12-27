@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class CategoryController extends Controller
@@ -12,21 +13,26 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     *
      */
     public function index()
     {
         $category = Category::all();
-        return view('admin.Category.viewCategory', compact('category'));
+        return view('admin.Category.viewCategory', [
+            'category'=>$category,
+            'auth_user'=>Auth::user(),
+            ]);
     }
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     *
      */
     public function create()
     {
-        return view('admin.Category.create_Category');
+        return view('admin.Category.create_Category',[
+            'auth_user'=>Auth::user(),
+        ]);
     }
 
     public function store(Request $request)
@@ -48,8 +54,7 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
+
      */
     public function show(Category $category)
     {
@@ -59,21 +64,21 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
+
      */
     public function edit($id)
     {
         $edit_operation = Category::find($id);
-        return view('admin.Category.edit_category', compact('edit_operation'));
+        return view('admin.Category.edit_category', [
+            'edit_operation'=>$edit_operation,
+            'auth_user'=>Auth::user(),
+            ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCategoryRequest  $request
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
+
      */
     public function update(Request $request, $id)
     {
@@ -99,13 +104,13 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
+
      */
     public function destroy($id)
     {
         $delete_operation = Category::find($id);
-        $delete_operation->destroy($id);
+
+            $$delete_operation -> delete();
 
         return redirect()->route('category.index');
     }
