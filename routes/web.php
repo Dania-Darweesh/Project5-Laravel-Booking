@@ -7,6 +7,8 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserReservationController;
+use App\Http\Controllers\UserPublicController;
+
 use App\Models\Category;
 use App\Models\Review;
 use App\Models\room;
@@ -102,3 +104,7 @@ Route::get('/pages/rooms-single', function () {
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+///////////////
+Route::resource('/pages/userProfile', UserPublicController::class);
+
