@@ -6,11 +6,7 @@ use App\Models\Category;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-<<<<<<< HEAD
-use App\Models\Role;
-=======
 use Illuminate\Support\Facades\Hash;
->>>>>>> 58bf66beaa088fb90ea8e642324c228590655ea8
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,24 +17,43 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-<<<<<<< HEAD
-         \App\Models\User::factory(10)->create();
-      
-      
-=======
-      // \App\Models\User::factory(10)->create();
-        User::create([
+      \App\Models\User::factory(10)->create();
+        //Admin User
+       /* User::create([
            'name'=>'Awni',
             'email'=>'Awni@gmail.com',
                 'password'=>Hash::make('Awni@1998'),
             'role_id'=>2
 
-        ]);
+        ]);*/
+
+        //Super Admin User
+        // User::create([
+        //     'name'=>'Osaid',
+        //     'email'=>'Osaidgh@gmail.com',
+        //     'password'=>Hash::make('Osaid@1999'),
+        //     'role_id'=>3
+
+        // ]);
+        // User::create([
+        //     'name'=>'Osaid',
+        //     'email'=>'Osaid@gmail.com',
+        //     'password'=>Hash::make('Osaid@1999'),
+        //     'role_id'=>2
+
+        // ]);
+        // User::create([
+        //     'name'=>'Leen',
+        //      'email'=>'leen@gmail.com',
+        //          'password'=>Hash::make('Leen23@2000'),
+        //      'role_id'=>1
+
+        //  ]);
 
 
 
 
->>>>>>> 58bf66beaa088fb90ea8e642324c228590655ea8
+
 
     }
 }

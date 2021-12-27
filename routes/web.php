@@ -43,18 +43,29 @@ Route::get('/admin', function () {
         "all_rooms"=>room::all()->count(),
         "rooms_booked"=>room::where('status',1)->count(),
         'rooms_available'=>room::where('status',0)->count(),
-        'number_of_users'=>user::where('role_id',1)->count(),
+        'number_of_users'=>user::all()->where('role_id',1)->count(),
         'number_of_reservations'=>UserReservation::count(),
         'number_of_reviews'=>Review::count(),
-        'user'=>Auth::user(),
+        'auth_user'=>Auth::user(),
 
     ]);
 })->name('admin.dashboard')->middleware('admin.auth');
 
 
 
+//Osaid
+Route::post('/saveReview', [ReviewController::class,'store'])->name('public.storeReview');
+
+
 Route::get('/categories', [RoomController::class,'show_room_from_specific_category'])->name('public.showRoom');
+Route::get('/allRooms', [RoomController::class,'show_all_available_rooms'])->name('public.showAllRooms');
 Route::post('/rooms', [UserReservationController::class,'available_rooms'])->name('public.availableRooms');
+Route::get('/single-room',[RoomController::class,'single_rooms'])->name('public.singleRoom');
+//this route for booing
+Route::post('/book',[UserReservationController::class,'store'])->name('book_now');
+
+
+
 
 Route::get('/signupTheme',function(){
     return view('pages.signup');

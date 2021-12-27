@@ -58,18 +58,15 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
 	          <li class="nav-item active"><a href="{{route('home')}}" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="" class="nav-link">Our Rooms</a></li>
+	          <li class="nav-item"><a href="{{route('public.showAllRooms')}}" class="nav-link">Our Rooms</a></li>
 	          <li class="nav-item"><a href="{{route('restaurant')}}" class="nav-link">Restaurant</a></li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
-	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">
+	          <li class="nav-item" style="margin-top: 20px!important;">
                       @auth
                           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
-                              <button class="btn btn-sm btn-outline-info  text-white" type="submit">Log out</button>
+                              <button class="btn btn-sm btn-outline-info  text-white border-0" type="submit">Log out</button>
                               @csrf
                           </form>
-                      @endauth</a></li>
+                      @endauth</li>
 
 	        </ul>
 	      </div>

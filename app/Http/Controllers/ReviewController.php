@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Review;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
     public function index()
     {
         $review = Review::all();
-        return view('admin.Review.viewReview', compact('review'));
+        return view('admin.Review.viewReview', [
+            'review'=>$review,
+            'auth_user'=>Auth::user(),
+        ]);
     }
 
     /**
@@ -27,8 +31,7 @@ class ReviewController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+   
      */
     public function store(Request $request)
     {

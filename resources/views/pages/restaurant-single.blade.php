@@ -66,7 +66,7 @@
 							<h2 class="contact-title">Add a review</h2>
 						</div>
 						<div class="col-lg-8">
-							<form class="form-rest-single contact_form" method="POST" action="{{route('review.store')}}" id="contactForm" novalidate="novalidate">
+							<form class="form-rest-single contact_form" method="POST" action="{{route('public.storeReview')}}" id="contactForm" novalidate="novalidate">
 								@csrf
 								<div class="row">
 									

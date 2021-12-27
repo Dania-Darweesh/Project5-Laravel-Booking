@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
+
 use App\Models\Category;
 use App\Models\room;
-use App\Http\Requests\StoreroomRequest;
-use App\Http\Requests\UpdateroomRequest;
 use App\Models\UserReservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class RoomController extends Controller
 {
@@ -15,17 +17,25 @@ class RoomController extends Controller
     {
         $categories = Category::all();
         $rooms = Room::all();
-        return view('admin.rooms.rooms',compact('rooms','categories'));
+        return view('admin.rooms.rooms',[
+            'rooms'=>$rooms,
+            'categories'=>$categories,
+            'auth_user'=>Auth::user(),
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     *
      */
     public function create()
     {   $categories = Category::all();
-        return view('admin.rooms.add', compact('categories'));
+        return view('admin.rooms.add', [
+            'categories'=>$categories,
+            'auth_user'=>Auth::user(),
+
+        ]);
     }
 
     /**
@@ -71,7 +81,11 @@ class RoomController extends Controller
     public function edit(room $room)
     {
         $categories = Category::all();
-        return view ("admin.rooms.edit" , compact('room' , 'categories'));
+        return view ("admin.rooms.edit" ,[
+            'room'=>$room,
+            'categories'=>$categories,
+            'auth_user'=>Auth::user(),
+        ]);
 
         // $categories = Category::all();
         // return view('admin.rooms.index',[
@@ -115,14 +129,32 @@ class RoomController extends Controller
             //status 1==room is booked
             //show all the room associated with a specific category ,and it's not booked.
             //we should bring back the status of the room to 0 after checkout
-            $rooms= Room::where('category_id',$res['category_id'])
-                         ->where('status',0)
-                         ->get();
+            $rooms= Room::all()
+                        ->where('category_id',$res['category_id']);
+
+
             return view("pages.rooms",[
                 'rooms'=>$rooms,
+                'available'=>false,
             ]);
 
         }
+
+
+
+    }
+    public function single_rooms(Request $request )
+    {  $room = room::find($request-> id );
+        $categories = Category::all();
+        return view('pages.rooms-single',compact('room' ,'categories'));
+    }
+    public function show_all_available_rooms(Request $request){
+        $rooms=Room::all();
+        return view('pages.rooms',[
+           'rooms'=>$rooms,
+           'available'=>$request->available,
+        ]);
+
 
 
     }

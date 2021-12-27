@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserReservation extends Model
 {
+    protected $primaryKey = "id" ;// default it look for id
     use HasFactory;
     protected $fillable = [
         'room_id',

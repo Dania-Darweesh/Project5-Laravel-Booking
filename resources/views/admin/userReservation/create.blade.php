@@ -13,7 +13,7 @@
                         <a href="/admin/userReservation">Show reservation</a>
                     </div>
 
-                    <form method="post" action="{{route('userReservation.store')}}" class="dropzone dropzone-custom needsclick add-professors" enctype="multipart/form-data">
+                    <form method="post" style="padding: 50px 0 !important;" action="{{route('userReservation.store')}}" class="dropzone dropzone-custom needsclick add-professors" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-lg-10 col-md-6 col-sm-6 col-xs-12 m-auto">
@@ -49,7 +49,7 @@
 
                             </div>
                         </div>
-                        <br>
+
                         <button type="submit" class="btn btn-primary waves-effect waves-light">Add</button>
 
                     </form>

@@ -7,6 +7,7 @@ use App\Models\UserReservation;
 use App\Http\Requests\StoreUserReservationRequest;
 use App\Http\Requests\UpdateUserReservationRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class UserReservationController extends Controller
@@ -15,39 +16,52 @@ class UserReservationController extends Controller
     {
         //
         $shows = UserReservation::all();
-        return view('admin.userReservation.show', compact('shows'));
+        return view('admin.userReservation.show',[
+            'shows'=>$shows,
+            'auth_user'=>Auth::user(),
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     *
      */
     public function create()
     {
         //
-        return view('admin.userReservation.create');
+        return view('admin.userReservation.create',[
+            'auth_user'=>Auth::user(),
+        ]);
     }
 
 
     public function store(Request $request)
     {
-        //
+
 
         /* dd($request->all());  */ // just to check data
-
-        UserReservation::create([
-            "room_id"        => $request->room_id,
-            "user_id"        => $request->user_id,
-            "total_price"    => $request->total_price,
-            "number_of_days" => $request->number_of_days,
-            "checkin_date"   => $request->checkin_date,
-            "checkout_date"  => $request->checkout_date,
-            "total_adults"   => $request->total_adults,
+        $number_of_days=(strtotime($request->checkout_date)-(strtotime($request->checkin_date)))/(3600*24);
 
 
 
-        ]);
+      $reservation = new UserReservation();
+            $reservation->room_id     =  $request->room_id;
+            $reservation->user_id     =   Auth::user()->id;
+            $reservation->total_price  =   $request->total_price;
+            $reservation->number_of_days = $number_of_days;
+            $reservation->checkin_date  =  $request->checkin_date;
+            $reservation->checkout_date = $request->checkout_date;
+            $reservation->total_adults   = 2;
+            $reservation->save();
+
+
+
+
+
+        if($request->book){
+            return view('pages.succeed');
+        }
 
         return redirect()->route("userReservation.index");
     }
@@ -110,12 +124,16 @@ class UserReservationController extends Controller
         $availableRooms= $availableRooms->where('category_id',$req->category_id)
                                          ->where('number_of_beds',$req->number_of_beds);
 
+
 //        return $availableRooms;
 //        //filter the rooms according to category and number of beds
 
 
        return view('pages.rooms',[
            'rooms'=>$availableRooms,
+           'available'=>'true',
+//           'checkin_date'=>$req->checkin_date,
+//           'checkout_date'=>$req->checkout_date,
 
        ]);
 
