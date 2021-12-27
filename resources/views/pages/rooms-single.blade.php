@@ -20,6 +20,7 @@
 
 	</div>
     </div>
+	
 
     <section class="ftco-section">
       <div class="container">
@@ -31,27 +32,36 @@
           			<div class="single-slider owl-carousel">
                   
           				<div class="item">
-          					<div class="room-img" style="background-image: url(images/room-4.jpg);"></div>
+          					<div class="room-img" style="background-image: url({{asset("images/".($room->room_img))}});"></div>
           				</div>
           				<div class="item">
-          					<div class="room-img" style="background-image: url(images/room-5.jpg);"></div>
+          					<div class="room-img" style="background-image: url({{asset("images/".($room->room_img))}});"></div>
           				</div>
           				<div class="item">
-          					<div class="room-img" style="background-image: url(images/room-6.jpg);"></div>
+          					<div class="room-img" style="background-image: url({{asset("images/".($room->room_img))}});"></div>
           				</div>
           			</div>
           		</div>
           		<div class="col-md-12 room-single mt-4 mb-5 ftco-animate">
-          			<h2 class="mb-4">Luxury Room <span>- (4 Available rooms)</span></h2>
+          			<h2 class="mb-4">{{$room->category->category_name}}</h2>
     						<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
     						<div class="d-md-flex mt-5 mb-5">
     							<ul class="list">
-	    							<li><span>Max:</span> 3 Persons</li>
-	    							<li><span>Size:</span> 45 m2</li>
+									@if($room->has_balcony)
+									<li><span>Balcony:</span> with Balcony</li>
+									@else
+									<li><span>Balcony:</span> without  Balcony</li>
+									@endif
+	    							<li><span>Max:</span> {{$room->number_of_beds}} Person</li>
+	    							
 	    						</ul>
 	    						<ul class="list ml-md-5">
+									@if($room->has_sea_view)
 	    							<li><span>View:</span> Sea View</li>
-	    							<li><span>Bed:</span> 1</li>
+									@else 
+									<li><span>View:</span>NO Sea View</li>
+									@endif
+	    							<li><span>Bed:</span> {{$room->number_of_beds}} Bed</li>
 	    						</ul>
     						</div>
     	     		</div>
@@ -68,17 +78,20 @@
           		</div>
           	</div>
           </div> <!-- .col-md-8 -->
+		  		
+	
           <div class="col-lg-4 sidebar ftco-animate pl-md-5">
             <div class="sidebar-box ftco-animate">
               <div class="categories">
+				  
                 <h1 class="mb-4 bread">&nbsp;</h1>
                 <h3>Categories</h3>
-                <li><a href="#">Properties <span>(12)</span></a></li>
-                <li><a href="#">Home <span>(22)</span></a></li>
-                <li><a href="#">House <span>(37)</span></a></li>
-                <li><a href="#">Villa <span>(42)</span></a></li>
-                <li><a href="#">Apartment <span>(14)</span></a></li>
-                <li><a href="#">Condominium <span>(140)</span></a></li>
+                <li><a href="http://127.0.0.1:8000/categories?public=1&category_id=1">King Room</a></li>
+                <li><a href="http://127.0.0.1:8000/categories?public=1&category_id=2">Suite Room</a></li>
+                <li><a href="http://127.0.0.1:8000/categories?public=1&category_id=3">Family Room</a></li>
+                <li><a href="http://127.0.0.1:8000/categories?public=1&category_id=4">Deluxe Room</a></li>
+                <li><a href="http://127.0.0.1:8000/categories?public=1&category_id=5">Luxury Room</a></li>
+                <li><a href="http://127.0.0.1:8000/categories?public=1&category_id=6">Superior Room</a></li>
               </div>
             </div>
 

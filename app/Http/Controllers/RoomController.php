@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateroomRequest;
 use App\Models\UserReservation;
 use Illuminate\Http\Request;
 
+
 class RoomController extends Controller
 {
     public function index()
@@ -125,5 +126,10 @@ class RoomController extends Controller
         }
 
 
+    }
+    public function single_rooms(Request $request )
+    {  $room = room::find($request-> id );
+        $categories = Category::all();
+        return view('pages.rooms-single',compact('room' ,'categories'));
     }
 }

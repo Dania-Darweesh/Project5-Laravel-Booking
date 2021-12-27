@@ -54,6 +54,8 @@ Route::get('/admin', function () {
 
 Route::get('/categories', [RoomController::class,'show_room_from_specific_category'])->name('public.showRoom');
 Route::post('/rooms', [UserReservationController::class,'available_rooms'])->name('public.availableRooms');
+Route::get('/single-room',[RoomController::class,'single_rooms'])->name('public.singleRoom');
+
 
 Route::get('/signupTheme',function(){
     return view('pages.signup');
