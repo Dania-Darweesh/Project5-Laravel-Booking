@@ -23,7 +23,7 @@ class CreateUserReservationsTable extends Migration
             $table->string('checkin_date');
             $table->string('checkout_date');
             $table->integer('total_adults');
-            $table->integer('total_children');
+
         });
     }
 

@@ -5,17 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Meal;
 use App\Http\Requests\StoreMealRequest;
 use App\Http\Requests\UpdateMealRequest;
+use Illuminate\Http\Request;
 
 class MealController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
+        $meals = Meal::all();
+        return view('admin.meal.index', compact('meals'));
     }
 
     /**
@@ -26,6 +24,7 @@ class MealController extends Controller
     public function create()
     {
         //
+        return view('admin.meal.create');
     }
 
     /**
@@ -34,10 +33,26 @@ class MealController extends Controller
      * @param  \App\Http\Requests\StoreMealRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMealRequest $request)
+    public function store(Request $request)
     {
         //
+
+        if ($request->hasFile('meal_img')) {
+            $file = $request->meal_img;
+            $new_file = time() . $file->getClientOriginalName();
+            $file->move('uploads', $new_file);
+        }
+        Meal::create([      //Movies :the name of the model
+            "name"  => $request->name,
+            "price"  => $request->price,
+            "description" => $request->description,
+            "meal_img" => 'uploads/' . $new_file,
+
+        ]);
+
+        return redirect()->back();
     }
+
 
     /**
      * Display the specified resource.
@@ -45,9 +60,10 @@ class MealController extends Controller
      * @param  \App\Models\Meal  $meal
      * @return \Illuminate\Http\Response
      */
-    public function show(Meal $meal)
+    public function show($id)
     {
         //
+
     }
 
     /**
@@ -56,9 +72,11 @@ class MealController extends Controller
      * @param  \App\Models\Meal  $meal
      * @return \Illuminate\Http\Response
      */
-    public function edit(Meal $meal)
+    public function edit($id)
     {
         //
+        $mealEdit = Meal::find($id);
+        return view('admin.meal.edit', compact('mealEdit'));
     }
 
     /**
@@ -68,9 +86,26 @@ class MealController extends Controller
      * @param  \App\Models\Meal  $meal
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMealRequest $request, Meal $meal)
+    public function update(Request $request, $id)
     {
         //
+
+        $mealEdit = Meal::find($id);
+        if ($request->hasFile('meal_img')) {
+            $file = $request->meal_img;
+            $new_file = time() . $file->getClientOriginalName();
+            $file->move('uploads', $new_file);
+            //photo
+            $mealEdit->meal_img = 'uploads/' . $new_file;
+        }
+
+        $mealEdit->name = $request->name;
+        $mealEdit->description = $request->description;
+        $mealEdit->price = $request->price;
+
+        // call update func
+        $mealEdit->update();
+        return redirect()->route('meals.index');
     }
 
     /**
@@ -79,8 +114,11 @@ class MealController extends Controller
      * @param  \App\Models\Meal  $meal
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Meal $meal)
+    public function destroy($id)
     {
         //
+        $mealDestroy = Meal::find($id);
+        $mealDestroy->destroy($id);
+        return redirect()->route('meals.index');
     }
 }

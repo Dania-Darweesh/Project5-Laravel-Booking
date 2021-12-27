@@ -20,4 +20,5 @@ class Review extends Model
     public function meal(){
         return $this->belongsTo(Meal::class);
     }
+
 }

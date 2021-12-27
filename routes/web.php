@@ -1,10 +1,19 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MealController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\RoomController;
-use App\Models\Meal;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserReservationController;
+use App\Models\Category;
 use App\Models\Review;
+use App\Models\room;
+use App\Models\Meal;
+use App\Models\User;
+use App\Models\UserReservation;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Resource_;
@@ -20,23 +29,50 @@ use phpDocumentor\Reflection\Types\Resource_;
 |
 */
 
-Route::get('/pages', function () {
-    return view('pages.index');
-})->name('home');
-
+Route::resource('/admin/users', UserController::class)->middleware('super_admin.auth');
+Route::resource('/admin/categories', CategoryController::class)->middleware('admin.auth');
+Route::resource("/admin/rooms", RoomController::class)->middleware('admin.auth');
+Route::resource('/admin/userReservation', UserReservationController::class)->middleware('admin.auth');
+Route::resource('/admin/meals', MealController::class)->middleware('admin.auth');
+Route::resource('/admin/category', CategoryController::class)->middleware('admin.auth');
+Route::resource('/admin/review', ReviewController::class)->middleware('admin.auth');
 Route::get('/admin', function () {
-    return view('admin.index');
+
+
+    return view('admin.index',[
+        "all_rooms"=>room::all()->count(),
+        "rooms_booked"=>room::where('status',1)->count(),
+        'rooms_available'=>room::where('status',0)->count(),
+        'number_of_users'=>user::where('role_id',1)->count(),
+        'number_of_reservations'=>UserReservation::count(),
+        'number_of_reviews'=>Review::count(),
+        'user'=>Auth::user(),
+
+    ]);
+})->name('admin.dashboard')->middleware('admin.auth');
+
+
+
+Route::get('/categories', [RoomController::class,'show_room_from_specific_category'])->name('public.showRoom');
+Route::post('/rooms', [UserReservationController::class,'available_rooms'])->name('public.availableRooms');
+
+Route::get('/signupTheme',function(){
+    return view('pages.signup');
 });
 
-Route::get('/pages/restaurant-single', function (Request $request) {
+
+// we need to change the url
+
+Route::get('/pages/restaurant-single', function (Meal $id,Request $request) {
     // dd('helllllllllllo');
+  
     $meal    = Meal::find($request->id);
     $reviews = Review::where('meal_id', $request->id)->get();
 
     return view('pages.restaurant-single',[
 
-        'meal'   =>$meal,
-        'reviews'=>$reviews 
+        'meal'   => $meal ,
+        'reviews'=> $reviews 
 
     ]);
 
@@ -44,32 +80,14 @@ Route::get('/pages/restaurant-single', function (Request $request) {
 
 
 Route::get('/pages/restaurant', function () {
-    return view('pages.restaurant');
-});
+    $meals = Meal::all();
+    return view('pages.restaurant',['meals'=>$meals]);
+})->name('restaurant');
 
 Route::get('/pages/rooms-single', function () {
     return view('pages.rooms-single');
 });
 
-// Route::get('/admin/category', function () {
-//     return view('admin.html.Category.Category');
-// });
+Auth::routes();
 
-// Route::get('/admin/category', function () {
-//     return view('admin.html.Category');
-// });
-
-
-// Route::get('/admin/viewCategory', [CategoryController::class, 'index']);
-// Route::get('/admin/createCategory', [CategoryController::class, 'create']);
-// Route::get('/admin/editCategory', [CategoryController::class, 'edite']);
-// Route::post('/admin/storeCategory', [CategoryController::class, 'store'])->name('category.store');
-
-Route::resource('/admin/category', CategoryController::class);
-Route::resource('/admin/review', ReviewController::class);
-
-
-
-
-
-
+Route::get('/', [HomeController::class, 'index'])->name('home');

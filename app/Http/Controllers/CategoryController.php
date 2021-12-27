@@ -6,8 +6,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Category;
-use App\Http\Requests\StoreCategoryRequest;
-use App\Http\Requests\UpdateCategoryRequest;
+use App\Models\room;
+use Illuminate\Http\Request;
+
 
 
 class CategoryController extends Controller
@@ -19,8 +20,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-            $category = Category::all();
-            return view('admin.Category.viewCategory', compact('category'));
+        $category = Category::all();
+        return view('admin.Category.viewCategory', compact('category'));
     }
     /**
      * Show the form for creating a new resource.
@@ -40,7 +41,7 @@ class CategoryController extends Controller
             $new_file = time() . $file->getClientOriginalName();
             $file->move('uploads', $new_file);
         }
-        Category::create([      //category :the name of the model 
+        Category::create([      //category :the name of the model
             "category_name"  => $request->category_name,
             "category_img" => 'uploads/' . $new_file,
         ]);
@@ -110,6 +111,6 @@ class CategoryController extends Controller
         $delete_operation = Category::find($id);
         $delete_operation->destroy($id);
 
-        return redirect()->route('category.index');  
+        return redirect()->route('category.index');
     }
 }

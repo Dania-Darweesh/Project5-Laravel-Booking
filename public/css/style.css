@@ -9211,7 +9211,7 @@ textarea.form-control {
 .ftco-footer {
   font-size: 16px;
   padding: 7em 0;
-  background: #2f89fc;
+  background: #68A9FC;
   position: relative; }
   .ftco-footer .overlay {
     position: absolute;
@@ -9220,8 +9220,8 @@ textarea.form-control {
     right: 0;
     bottom: 0;
     content: '';
-    opacity: .9;
-    background: #2f89fc; }
+    opacity: .8;
+    background: #68A9FC; }
   .ftco-footer .ftco-footer-logo {
     text-transform: uppercase;
     letter-spacing: .1em; }

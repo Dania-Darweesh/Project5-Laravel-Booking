@@ -11,4 +11,10 @@ class Meal extends Model
     public function reviews(){
         return $this->hasMany(Review::class);
     }
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'meal_img',
+    ];
 }

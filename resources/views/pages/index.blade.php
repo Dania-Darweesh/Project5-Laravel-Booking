@@ -41,13 +41,14 @@
     	<div class="container">
     		<div class="row no-gutters">
     			<div class="col-lg-12">
-    				<form action="#" class="booking-form aside-stretch">
+    				<form action="{{route('public.availableRooms')}}" method="post"  class="booking-form aside-stretch" >
 	        		<div class="row">
+                        @csrf
 	        			<div class="col-md d-flex py-md-4">
 	        				<div class="form-group align-self-stretch d-flex align-items-end">
 	        					<div class="wrap align-self-stretch py-3 px-4">
 				    					<label for="#">Check-in Date</label>
-				    					<input type="text" class="form-control checkin_date" placeholder="Check-in date">
+				    					<input type="date" name="checkin_date" class="form-control checkin_date_input " placeholder="Check-in date">
 			    					</div>
 			    				</div>
 	        			</div>
@@ -55,7 +56,7 @@
 	        				<div class="form-group align-self-stretch d-flex align-items-end">
 	        					<div class="wrap align-self-stretch py-3 px-4">
 				    					<label for="#">Check-out Date</label>
-				    					<input type="text" class="form-control checkout_date" placeholder="Check-out date">
+				    					<input type="date" name="checkout_date" class="form-control checkout_date_input " placeholder="Check-out date">
 			    					</div>
 			    				</div>
 	        			</div>
@@ -66,13 +67,10 @@
 			      					<div class="form-field">
 			        					<div class="select-wrap">
 			                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-			                    <select name="" id="" class="form-control">
-			                    	<option value="">Suite</option>
-			                      <option value="">Family Room</option>
-			                      <option value="">Deluxe Room</option>
-			                      <option value="">Classic Room</option>
-			                      <option value="">Superior Room</option>
-			                      <option value="">Luxury Room</option>
+			                    <select name="category_id" id="" class="form-control ">
+                                    @foreach($categories as $category)
+                                        <option class="h6" value="{{$category->id}}">{{$category->category_name}}</option>
+                                    @endforeach
 			                    </select>
 			                  </div>
 				              </div>
@@ -86,13 +84,12 @@
 			      					<div class="form-field">
 			        					<div class="select-wrap">
 			                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-			                    <select name="" id="" class="form-control">
-			                    	<option value="">1 Adult</option>
-			                      <option value="">2 Adult</option>
-			                      <option value="">3 Adult</option>
-			                      <option value="">4 Adult</option>
-			                      <option value="">5 Adult</option>
-			                      <option value="">6 Adult</option>
+			                    <select name="number_of_beds" id="" class="form-control">
+			                    	<option value="1">1 Adult</option>
+			                      <option value="2">2 Adult</option>
+			                      <option value="3">3 Adult</option>
+			                      <option value="4">4 Adult</option>
+
 			                    </select>
 			                  </div>
 				              </div>
@@ -101,11 +98,13 @@
 	        			</div>
 	        			<div class="col-md d-flex">
 	        				<div class="form-group d-flex align-self-stretch">
-			              <a href="#" class="btn btn-primary py-5 py-md-3 px-4 align-self-stretch d-block"><span>Check Availability <small>Best Price Guaranteed!</small></span></a>
+			              <button  type="submit " class="btn btn-primary py-5 py-md-3 px-4 align-self-stretch d-block check_room_btn"><span>Check Availability <small>Best Price Guaranteed!</small></span></button>
 			            </div>
 	        			</div>
 	        		</div>
+
 	        	</form>
+
 	    		</div>
     		</div>
     	</div>
@@ -293,86 +292,22 @@
           </div>
         </div>
     		<div class="row no-gutters">
+                @foreach($categories as $category)
     			<div class="col-lg-6">
     				<div class="room-wrap d-md-flex ftco-animate">
-    					<a href="#" class="img" style="background-image: url(images/room-6.jpg);"></a>
+    					<a href="#" class="img" style="background-image: url({{asset($category->category_img)}});"></a>
     					<div class="half left-arrow d-flex align-items-center">
     						<div class="text p-4 text-center">
     							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
     							<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
-	    						<h3 class="mb-3"><a href="rooms.html">King Room</a></h3>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
+	    						<h3 class="mb-3"><a href="{{route('public.showRoom',['public'=>true,'category_id'=>$category->id])}}">{{$category->category_name}}</a></h3>
+	    						<p class="pt-1"><a href="{{route('public.showRoom',['public'=>true,'category_id'=>$category->id])}}" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
     						</div>
     					</div>
     				</div>
     			</div>
-    			<div class="col-lg-6">
-    				<div class="room-wrap d-md-flex ftco-animate">
-    					<a href="#" class="img" style="background-image: url(images/room-1.jpg);"></a>
-    					<div class="half left-arrow d-flex align-items-center">
-    						<div class="text p-4 text-center">
-    							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
-    							<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
-	    						<h3 class="mb-3"><a href="rooms.html">Suite Room</a></h3>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
+                @endforeach
 
-    			<div class="col-lg-6">
-    				<div class="room-wrap d-md-flex ftco-animate">
-    					<a href="#" class="img order-md-last" style="background-image: url(images/room-2.jpg);"></a>
-    					<div class="half right-arrow d-flex align-items-center">
-    						<div class="text p-4 text-center">
-    							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
-    							<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
-	    						<h3 class="mb-3"><a href="rooms.html">Family Room</a></h3>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-lg-6">
-    				<div class="room-wrap d-md-flex ftco-animate">
-    					<a href="#" class="img order-md-last" style="background-image: url(images/room-3.jpg);"></a>
-    					<div class="half right-arrow d-flex align-items-center">
-    						<div class="text p-4 text-center">
-    							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
-    							<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
-	    						<h3 class="mb-3"><a href="rooms.html">Deluxe Room</a></h3>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-
-    			<div class="col-lg-6">
-    				<div class="room-wrap d-md-flex ftco-animate">
-    					<a href="#" class="img" style="background-image: url(images/room-4.jpg);"></a>
-    					<div class="half left-arrow d-flex align-items-center">
-    						<div class="text p-4 text-center">
-    							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
-    							<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
-	    						<h3 class="mb-3"><a href="rooms.html">Luxury Room</a></h3>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-lg-6">
-    				<div class="room-wrap d-md-flex ftco-animate">
-    					<a href="#" class="img" style="background-image: url(images/room-5.jpg);"></a>
-    					<div class="half left-arrow d-flex align-items-center">
-    						<div class="text p-4 text-center">
-    							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
-    							<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
-	    						<h3 class="mb-3"><a href="rooms.html">Superior Room</a></h3>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
     		</div>
     	</div>
     </section>
@@ -392,23 +327,37 @@
         </div>
 				<div class="row">
 					{{-- foreach **************** --}}
+
+					
+
+
+
+					@foreach ($meals as $item)
+					
         	<div class="col-lg-6 col-xl-4 d-flex">
+				
+				<a href="{{route('single-meal',['id'=>$item->id])}}">
         		<div class="pricing-entry rounded d-flex ftco-animate">
-        			<div class="img" style="background-image: url(images/menu-1.jpg);"></div>
+        			<div class="img" style="background-image: url({{$item->meal_img}});"></div>
         			<div class="desc p-4">
 	        			<div class="d-md-flex text align-items-start">
-	        				<h3><span>Grilled Crab with Onion</span></h3>
-	        				<span class="price">$20.00</span>
+	        				<h3><span>{{$item->name}}</span></h3>
+	        				<span class="price">${{$item->price}}</span>
 	        			</div>
 	        			<div class="d-block">
-	        				<p>A small river named Duden flows by their place and supplies</p>
+	        				<p>{{$item->description}}</p>
 	        			</div>
         			</div>
         		</div>
+			</a>
+
         	</div>
+			
+			@endforeach
+
         	{{-- *********** --}}
         	<div class="col-md-12 text-center ftco-animate">
-        		<p><a href="#" class="btn btn-primary rounded">View All Menu</a></p>
+        		<p><a href="{{route('restaurant')}}" class="btn btn-primary rounded">View All Menu</a></p>
         	</div>
         </div>
 			</div>

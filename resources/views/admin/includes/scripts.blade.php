@@ -58,7 +58,9 @@
 <script src="{{asset('admin_styles/js/main.js')}}"></script>
 <!-- tawk chat JS
     ============================================ -->
-<script src="{{asset('admin_styles/js/tawk-chat.js')}}"></script>
+
+
+</script><script src="{{asset('admin_styles/js/customScript.js')}}"></script>
 </body>
 
 </html>
