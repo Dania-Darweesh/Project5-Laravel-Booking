@@ -28,6 +28,27 @@ class DatabaseSeeder extends Seeder
         ]);*/
 
         //Super Admin User
+        User::create([
+            'name'=>'Osaid',
+            'email'=>'Osaid@gmail.com',
+            'password'=>Hash::make('Osaid@1999'),
+            'role_id'=>3
+
+        ]);
+//        User::create([
+//            'name'=>'Osaid',
+//            'email'=>'Osaid@gmail.com',
+//            'password'=>Hash::make('Osaid@1999'),
+//            'role_id'=>2
+//
+//        ]);
+        User::create([
+            'name'=>'Leen',
+             'email'=>'leen@gmail.com',
+                 'password'=>Hash::make('Leen23@2000'),
+             'role_id'=>1
+
+         ]);
         // User::create([
         //     'name'=>'Osaid',
         //     'email'=>'Osaidgh@gmail.com',

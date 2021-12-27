@@ -64,7 +64,7 @@ Route::get('/allRooms', [RoomController::class,'show_all_available_rooms'])->nam
 Route::post('/rooms', [UserReservationController::class,'available_rooms'])->name('public.availableRooms');
 Route::get('/single-room',[RoomController::class,'single_rooms'])->name('public.singleRoom');
 //this route for booing
-Route::post('/book',[UserReservationController::class,'store'])->name('book_now');
+Route::post('/book',[UserReservationController::class,'store'])->name('book_now')->middleware('auth');
 
 
 
@@ -103,8 +103,12 @@ Route::get('/pages/rooms-single', function () {
 
 Auth::routes();
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', function(){
+    return view('pages.index',[
+        'categories'=>Category::all(),
+        'meals' => Meal::take(6)->get(),
+    ]);
+})->name('guest_home');
 
-///////////////
 Route::resource('/pages/userProfile', UserPublicController::class);
-

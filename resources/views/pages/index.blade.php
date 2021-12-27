@@ -46,7 +46,7 @@
                         @csrf
 	        			<div class="col-md d-flex py-md-4">
 	        				<div class="form-group align-self-stretch d-flex align-items-end">
-	        					<div class="wrap align-self-stretch py-3 px-4">
+	        					<div class="wrap align-self-stretch  px-4">
 				    					<label for="#">Check-in Date</label>
 				    					<input type="date" name="checkin_date" class="form-control checkin_date_input " placeholder="Check-in date">
 			    					</div>

@@ -32,7 +32,9 @@
 
                     </li>
                     <li>
+                        @if($auth_user->role_id===3)
                         <a  href="{{route('users.index')}}" aria-expanded="false"><span class="ion-md-person icon-wrap"></span> <span class="mini-click-non">Users</span></a>
+                            @endif
 
                     </li>
                     <li>
