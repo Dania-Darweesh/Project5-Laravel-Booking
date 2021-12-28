@@ -32,13 +32,13 @@
           			<div class="single-slider owl-carousel">
 
           				<div class="item">
-          					<div class="room-img" style="background-image: url("{{asset("images/" . $room->room_img)}}");"></div>
+          					<div class="room-img" style="background-image: url({{asset('images/'.$room->room_img)}});"></div>
           				</div>
           				<div class="item">
-          					<div class="room-img" style="background-image: url("{{asset("images/" . $room->room_img)}}");"></div>
+          					<div class="room-img" style="background-image: url({{asset('images/'.$room->room_img)}});"></div>
           				</div>
           				<div class="item">
-          					<div class="room-img" style="background-image: url("{{asset("images/" . $room->room_img)}}");"></div>
+          					<div class="room-img" style="background-image: url({{asset('images/'.$room->room_img)}});"></div>
           				</div> 
           			</div>
           		</div>

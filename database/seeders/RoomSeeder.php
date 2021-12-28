@@ -36,7 +36,7 @@ class RoomSeeder extends Seeder
                 'has_balcony'    => 0,
                 'has_sea_view'   => 0,
                 'status'         => 0,
-                'room_img'       => "king-nobalcony-no seaview.jpg",
+                'room_img'       => "king-nobalcony-no-seaview.jpg",
                 'room_description' => "1 large double bed",
             ]);
 
@@ -47,7 +47,7 @@ class RoomSeeder extends Seeder
                 'has_balcony'    => 1,
                 'has_sea_view'   => 1,
                 'status'         => 0,
-                'room_img'       => "kingSizewithbalconyand seaview.jpg",
+                'room_img'       => "kingSizewithbalconyand-seaview.jpg",
                 'room_description' => "1 large double bed ",
             ]);
             Room::create([
@@ -88,7 +88,7 @@ class RoomSeeder extends Seeder
                 'has_balcony'    => 1,
                 'has_sea_view'   => 0,
                 'status'         => 0,
-                'room_img'       => "couple-balcony-no sea view .jpg",
+                'room_img'       => "couple-balcony-no-sea-view.jpg",
                 'room_description' => "1 large double bed ",
             ]);
             Room::create([
@@ -233,7 +233,7 @@ class RoomSeeder extends Seeder
                 'has_balcony'    => 1,
                 'has_sea_view'   => 0,
                 'status'         => 0,
-                'room_img'       => "couple-balcony-no sea view .jpg",
+                'room_img'       => "couple-balcony-no-sea-view.jpg",
                 'room_description' => "Deluxe Bungalows  ",
             ]);
             Room::create([
@@ -304,7 +304,7 @@ class RoomSeeder extends Seeder
                 'has_balcony'    => 0,
                 'has_sea_view'   => 0,
                 'status'         => 0,
-                'room_img'       => "luxery no.jpg",
+                'room_img'       => "luxery-no.jpg",
                 'room_description' => "luxery Bungalows ",
             ]);
             Room::create([
@@ -344,7 +344,7 @@ class RoomSeeder extends Seeder
                 'has_balcony'    => 1,
                 'has_sea_view'   => 0,
                 'status'         => 0,
-                'room_img'       => "couple-balcony-no sea view .jpg",
+                'room_img'       => "couple-balcony-no-sea-view.jpg",
                 'room_description' => "Deluxe Bungalows  ",
             ]);
             Room::create([
@@ -395,7 +395,7 @@ class RoomSeeder extends Seeder
                 'has_balcony'    => 0,
                 'has_sea_view'   => 0,
                 'status'         => 0,
-                'room_img'       => "luxery no.jpg",
+                'room_img'       => "luxery-no.jpg",
                 'room_description' => "luxery Bungalows ",
             ]);
             Room::create([
@@ -435,7 +435,7 @@ class RoomSeeder extends Seeder
                 'has_balcony'    => 1,
                 'has_sea_view'   => 0,
                 'status'         => 0,
-                'room_img'       => "couple-balcony-no sea view .jpg",
+                'room_img'       => "couple-balcony-no-sea-view.jpg",
                 'room_description' => "Deluxe Bungalows  ",
             ]);
             Room::create([
@@ -495,7 +495,7 @@ class RoomSeeder extends Seeder
                 'has_balcony'    => 1,
                 'has_sea_view'   => 0,
                 'status'         => 0,
-                'room_img'       => "couple-balcony-no sea view .jpg",
+                'room_img'       => "couple-balcony-no-sea-view.jpg",
                 'room_description' => "Deluxe Bungalows  ",
             ]);
         }

@@ -34,7 +34,7 @@
 
                                     </div>
 
-                                    <button style="margin: 10px 0 " class="btn btn-primary m-auto waves-effect waves-light">Submit</button>
+                                    <button style="margin: 10px 0 " class="btn btn-primary m-auto waves-effect waves-light">update</button>
                                     <!--  <a href="#" style="margin: 10px 0 !important;" class="btn btn-primary m-auto waves-effect waves-light">Back To Home</a> -->
                                 </div>
                             </form>

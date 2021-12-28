@@ -23,7 +23,7 @@
           		<div class="col-md-12 ftco-animate">
           			<div class="single-slider owl-carousel">
           				<div class="item">
-          					<div class="room-img" style="background-image: url({{$meal->meal_img}});"></div>
+          					<div class="room-img" style="background-image: url({{asset($meal->meal_img)}});"></div>
           				</div>
           	
           			</div>

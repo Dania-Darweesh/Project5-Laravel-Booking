@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <section class="ftco-section">
+    {{-- <section class="ftco-section">
     	<div class="container">
     		<div class="row">
     			<div class="col-md-6">
@@ -43,7 +43,7 @@
     			</div>
     		</div>
     	</div>
-    </section>
+    </section> --}}
 
     <section class="ftco-section ftco-menu bg-light">
 			<div class="container">
@@ -61,7 +61,7 @@
         	<div class="col-lg-6 col-xl-6 d-flex">
 				<a href="{{route('single-meal',['id'=>$item->id] )}}">
         		<div class="pricing-entry rounded d-flex ftco-animate">
-        			<div class="img" style="background-image: url({{$item->meal_img}});"></div>
+        			<div class="img" style="background-image: url({{asset($item->meal_img)}});"></div>
         			<div class="desc p-4">
 	        			<div class="d-md-flex text align-items-start">
 	        				<h3><span>{{$item->name}}</span></h3>

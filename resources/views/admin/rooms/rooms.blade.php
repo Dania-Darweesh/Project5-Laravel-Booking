@@ -31,7 +31,7 @@
                                 <td>{{$room->has_sea_view}}</td>
                                 <td>{{$room->status}}</td>
                                 <td class="room_description"><span class="small_text_des">{{substr($room->room_description,0,10)}}.....</span> </td>
-                                <td><img class ="w-20" src="{{asset("images/" . $room->room_img)}}" alt="Image"></td>
+                                <td><img class ="w-20" src="{{asset("images/".$room->room_img)}}" alt="Image"></td>
                                 <td>
                                      <form action = "{{route("rooms.destroy" , $room->id )}} " method = "POST">
                                          @csrf
