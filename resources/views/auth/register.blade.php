@@ -62,7 +62,7 @@
                                     </div>
                                 </form>
                             </div>
-                            <p>I'm already a member! <a id="signup" data-toggle="tab" href="#signin">Sign In</a></p>
+                            <p>I'm already a member! <a id="signup" href="{{ route('login') }}">Sign In</a></p>
                         </div>
                     </div>
                 </div>
