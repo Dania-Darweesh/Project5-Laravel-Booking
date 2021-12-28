@@ -76,14 +76,14 @@ Route::get('/signupTheme',function(){
 
 Route::get('/pages/restaurant-single', function (Meal $id,Request $request) {
     // dd('helllllllllllo');
-  
+
     $meal    = Meal::find($request->id);
     $reviews = Review::where('meal_id', $request->id)->get();
 
     return view('pages.restaurant-single',[
 
         'meal'   => $meal ,
-        'reviews'=> $reviews 
+        'reviews'=> $reviews
 
     ]);
 
@@ -105,5 +105,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/', function(){
     return view('pages.index',[
         'categories'=>Category::all(),
+        'meals'=>Meal::take(6)->get() ,
     ]);
 })->name('guest_home');
