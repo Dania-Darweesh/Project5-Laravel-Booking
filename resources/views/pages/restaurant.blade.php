@@ -22,20 +22,20 @@
     			<div class="col-md-6">
       			<div class="single-slider-resto mb-4 mb-md-0 owl-carousel">
       				<div class="item">
-      					<div class="resto-img rounded" style="background-image: url(/images/room-4.jpg);"></div>
+      					<div class="resto-img rounded" style="background-image: url(/images/Restaurant.jfif);background-size: contain"></div>
       				</div>
       				<div class="item">
-      					<div class="resto-img rounded" style="background-image: url(/images/room-5.jpg);"></div>
+      					<div class="resto-img rounded" style="background-image: url(/images/Restaurant.jfif);background-size: contain"></div>
       				</div>
       				<div class="item">
-      					<div class="resto-img rounded" style="background-image: url(/images/room-6.jpg);"></div>
+      					<div class="resto-img rounded" style="background-image: url(/images/Restaurant.jfif);background-size: contain"></div>
       				</div>
       			</div>
     			</div>
     			<div class="col-md-6 pl-md-5">
     				<div class="heading-section mb-4 my-5 my-md-0">
 	          	<span class="subheading">About Harbor Lights Hotel</span>
-	            <h2 class="mb-4">Harbor Lights Hotel Restaurants</h2>
+	            <h2 class="mb-4">Fairmont Hotel Restaurants</h2>
 	          </div>
 	          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
 	          <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
@@ -54,21 +54,21 @@
           </div>
         </div>
 				<div class="row">
-					
+
 					@foreach ($meals as $item)
-						
-					
+
+
         	<div class="col-lg-6 col-xl-6 d-flex">
 				<a href="{{route('single-meal',['id'=>$item->id] )}}">
-        		<div class="pricing-entry rounded d-flex ftco-animate">
-        			<div class="img" style="background-image: url({{$item->meal_img}});"></div>
+        		<div class="pricing-entry rounded d-flex ftco-animate w-100">
+        			<div class="img" style="background-image: url({{asset($item->meal_img)}});"></div>
         			<div class="desc p-4">
 	        			<div class="d-md-flex text align-items-start">
 	        				<h3><span>{{$item->name}}</span></h3>
 	        				<span class="price">${{$item->price}}</span>
 	        			</div>
 	        			<div class="d-block">
-	        				<p>{{$item->description}}</p>
+	        				<p>One of the best meals in our website</p>
 	        			</div>
         			</div>
         		</div>
@@ -76,8 +76,8 @@
         	</div>
 
 			@endforeach
-		
-        	
+
+
         </div>
 			</div>
 		</section>

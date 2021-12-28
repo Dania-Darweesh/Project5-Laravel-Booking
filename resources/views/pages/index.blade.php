@@ -27,7 +27,7 @@
 	          <div class="row no-gutters slider-text align-items-center justify-content-end">
 	          <div class="col-md-6 ftco-animate">
 	          	<div class="text">
-	          		<h2>Harbor Lights Hotel &amp; Resort</h2>
+	          		<h2>Fairmont Hotel &amp; Resort</h2>
 		            <h1 class="mb-3">It feels like staying in your own home.</h1>
 	            </div>
 	          </div>
@@ -115,7 +115,7 @@
       <div class="container">
       	<div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section text-center ftco-animate">
-          	<span class="subheading">Welcome to Harbor Lights Hotel</span>
+          	<span class="subheading">Welcome to Fairmont Hotel</span>
             <h2 class="mb-4">You'll Never Want To Leave</h2>
           </div>
         </div>
@@ -193,8 +193,8 @@
 					</div>
 					<div class="col-md-5 wrap-about pb-md-3 ftco-animate pr-md-5 pb-md-5 pt-md-4">
 	          <div class="heading-section mb-4 my-5 my-md-0">
-	          	<span class="subheading">About Harbor Lights Hotel</span>
-	            <h2 class="mb-4">Harbor Lights Hotel the Most Recommended Hotel All Over the World</h2>
+	          	<span class="subheading">About Fairmont Hotel</span>
+	            <h2 class="mb-4">Fairmont Hotel the Most Recommended Hotel All Over the World</h2>
 	          </div>
 	          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
 	          <p><a href="#" class="btn btn-secondary rounded">Reserve Your Room Now</a></p>
@@ -287,7 +287,7 @@
     	<div class="container-fluid px-0">
     		<div class="row no-gutters justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section text-center ftco-animate">
-          	<span class="subheading">Harbor Lights Rooms</span>
+          	<span class="subheading">Fairmont Rooms</span>
             <h2 class="mb-4">Hotel Master's Rooms</h2>
           </div>
         </div>
@@ -328,14 +328,14 @@
 				<div class="row">
 					{{-- foreach **************** --}}
 
-					
+
 
 
 
 					@foreach ($meals as $item)
-					
+
         	<div class="col-lg-6 col-xl-4 d-flex">
-				
+
 				<a href="{{route('single-meal',['id'=>$item->id])}}">
         		<div class="pricing-entry rounded d-flex ftco-animate">
         			<div class="img" style="background-image: url({{$item->meal_img}});"></div>
@@ -352,7 +352,7 @@
 			</a>
 
         	</div>
-			
+
 			@endforeach
 
         	{{-- *********** --}}

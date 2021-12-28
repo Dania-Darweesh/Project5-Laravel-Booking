@@ -59,9 +59,18 @@
 	        <ul class="navbar-nav ml-auto">
 	          <li class="nav-item active"><a href="{{route('home')}}" class="nav-link">Home</a></li>
 	          <li class="nav-item"><a href="{{route('public.showAllRooms')}}" class="nav-link">Our Rooms</a></li>
+                @auth
+            <li class="nav-item"><a href="{{route('userProfile.index')}}" class="nav-link">Profile</a></li>
+                @endauth
+
 	          <li class="nav-item"><a href="{{route('restaurant')}}" class="nav-link">Restaurant</a></li>
 	          <li class="nav-item" style="margin-top: 20px!important;">
+                      @guest
+                      <a href="{{ route('login') }}" class="btn btn-sm btn-outline-info  text-white border-0" type="submit">Login</a>
+
+                      @endguest
                       @auth
+
                           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
                               <button class="btn btn-sm btn-outline-info  text-white border-0" type="submit">Log out</button>
                               @csrf

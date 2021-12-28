@@ -32,7 +32,7 @@
 
 .booking-form {
 	background-color: #fff;
-	padding: 50px 20px;
+    padding: 20px 20px 0 20px;
 	-webkit-box-shadow: 0px 5px 20px -5px rgba(0, 0, 0, 0.3);
 	box-shadow: 0px 5px 20px -5px rgba(0, 0, 0, 0.3);
 	border-radius: 4px;
@@ -180,4 +180,25 @@
 }
 
 /* ////////////////////////////////////// */
+.wrapp{
 
+    width: 600px;
+    margin-left: 320px;
+    margin-top: 50px;
+}
+/* #info{
+    margin-top: -20px;
+    margin-left:500px ;
+} */
+#profile{
+    background-image:url('/images/ffffff.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.containerss{
+    opacity: 0.8;
+    padding: 50px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.993);
+
+}

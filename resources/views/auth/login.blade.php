@@ -56,15 +56,15 @@
                                                 <span class="checkmark"></span>
                                             </label>
                                         </div>
-                                        <div class="w-50 text-md-right">
-                                            @if (Route::has('password.request'))
-                                                <a href="{{ route('password.request') }}">Forgot Password</a>
-                                            @endif
-                                        </div>
+{{--                                        <div class="w-50 text-md-right">--}}
+{{--                                            @if (Route::has('password.request'))--}}
+{{--                                                <a href="{{ route('password.request') }}">Forgot Password</a>--}}
+{{--                                            @endif--}}
+{{--                                        </div>--}}
                                     </div>
                                 </form>
                             </div>
-                            <p class="text-center">Not a member? <a id="signup" data-toggle="tab" href="{{route('register')}}">Sign Up</a></p>
+                            <p class="text-center">Not a member? <a id="signup" href="{{ route('register') }}">Sign Up</a></p>
                         </div>
                     </div>
                 </div>

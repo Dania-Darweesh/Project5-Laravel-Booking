@@ -34,12 +34,7 @@
           				<div class="item">
           					<div class="room-img" style="background-image: url({{asset('images/'.$room->room_img)}});"></div>
           				</div>
-          				<div class="item">
-          					<div class="room-img" style="background-image: url();">></div>
-          				</div>
-          				<div class="item">
-          					<div class="room-img" style="background-image: url("{{asset(' images/ ' . ($room->room_img))}}");"></div>
-          				</div>
+
           			</div>
           		</div>
           		<div class="col-md-12 room-single mt-4 mb-5 ftco-animate">

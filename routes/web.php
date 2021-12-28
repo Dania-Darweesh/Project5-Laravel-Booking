@@ -7,6 +7,8 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserReservationController;
+use App\Http\Controllers\UserPublicController;
+
 use App\Models\Category;
 use App\Models\Review;
 use App\Models\room;
@@ -49,7 +51,7 @@ Route::get('/admin', function () {
         'auth_user'=>Auth::user(),
 
     ]);
-})->name('admin.dashboard')->middleware('admin.auth');
+})->name('admin.dashboard')->middleware(' ');
 
 
 
@@ -77,8 +79,9 @@ Route::get('/signupTheme',function(){
 Route::get('/pages/restaurant-single', function (Meal $id,Request $request) {
     // dd('helllllllllllo');
 
+
     $meal    = Meal::find($request->id);
-    $reviews = Review::where('meal_id', $request->id)->get();
+    $reviews = Review::where('mذeal_id', $request->id)->get();
 
     return view('pages.restaurant-single',[
 
@@ -87,7 +90,7 @@ Route::get('/pages/restaurant-single', function (Meal $id,Request $request) {
 
     ]);
 
-})->name('single-meal');
+    })->name('single-meal');
 
 
 Route::get('/pages/restaurant', function () {
@@ -108,3 +111,5 @@ Route::get('/', function(){
         'meals'=>Meal::take(6)->get() ,
     ]);
 })->name('guest_home');
+
+Route::resource('/pages/userProfile', UserPublicController::class);

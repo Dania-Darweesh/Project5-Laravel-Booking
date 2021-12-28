@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="logo-pro">
-                <a href="{{route('admin.dashboard')}}"><img class="main-logo" src="{{asset('admin_styles/img/logo/logo.png')}}" alt="" /></a>
+                <a href="{{route('admin.dashboard')}}"><img class="main-logo" src="{{asset('images/logo.png')}}" alt="" /></a>
             </div>
         </div>
     </div>
@@ -37,12 +37,13 @@
 
                                                 <li><a href="#"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a>
                                                 </li>
-                                                <li><a href="#"><span class="edu-icon edu-locked author-log-ic"></span> @auth
-                                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
-                                                                <button class="btn btn-primary btn-outline-info  text-white" type="submit">Log out</button>
-                                                                @csrf
-                                                            </form>
-                                                        @endauth</a></li></a>
+                                                <li> @auth
+                                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
+                                                            <button class="btn btn-primary btn-outline-info  text-white" type="submit">Log out</button>
+                                                            @csrf
+                                                        </form>
+
+                                                        @endauth</li>
                                                 </li>
                                             </ul>
                                         </li>

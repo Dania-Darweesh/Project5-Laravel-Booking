@@ -62,7 +62,7 @@
                                 </div>
                             </form>
                         </div>
-                        <p class="text-center">Not a member? <a id="signup" data-toggle="tab" href="#signup">Sign Up</a></p>
+                        <p class="text-center">Not a member? <a id="signup" href="{{ route('register') }}">Sign Up</a></p>
                     </div>
                 </div>
             </div>

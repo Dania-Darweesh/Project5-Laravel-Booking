@@ -23,15 +23,15 @@
           		<div class="col-md-12 ftco-animate">
           			<div class="single-slider owl-carousel">
           				<div class="item">
-          					<div class="room-img" style="background-image: url({{$meal->meal_img}});"></div>
+          					<div class="room-img" style="background-image: url({{asset($meal->meal_img)}});"></div>
           				</div>
-          	
+
           			</div>
           		</div>
           		<div class="col-md-12 room-single mt-4 mb-5 ftco-animate">
           			<h2 class="mb-4"> <span>{{$meal->name}}</span></h2>
-    						<p class="mb-5">{{$meal->description}}</p>
-							
+    						<p class="mb-5">One of the best meals in our website</p>
+
     						</div>
 
 				  <div class="mt-5 ">
@@ -40,7 +40,7 @@
 						<h5 class="mtext-108 cl2 p-b-7">
 							Add a review
 						</h5>
-						
+
 						<div class="row">
 							<div class="col-sm-12 ">
 								<label class="stext-102 col-12" for="review_title">Title</label>
@@ -50,7 +50,7 @@
 								<label class="stext-102 cl3 col-12" for="review_body">Your review</label>
 								<textarea class="col-12" id="review" name="review_body"></textarea>
 							</div>
-							
+
 						</div>
 						<button class="btn btn-primary mb-4" type="submit" name="add-btn">
 							Add commint
@@ -69,7 +69,7 @@
 							<form class="form-rest-single contact_form" method="POST" action="{{route('public.storeReview')}}" id="contactForm" novalidate="novalidate">
 								@csrf
 								<div class="row">
-									
+
 									<div class="col-sm-6">
 										<div class="form-group">
 											<input class="form-control valid" name="review_title" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Title'" placeholder="Enter Title">
@@ -80,12 +80,12 @@
 											<textarea class="form-control w-100" name="review_body" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your comment'" placeholder="Enter your comment "></textarea>
 										</div>
 									</div>
-									
+
 								</div>
 								<div class="form-group mt-3">
 									<button type="submit" class="btn-rest mb-5">Add comment</button>
 								</div>
-	
+
 								<input type="hidden" name="user_id" value="1">
 								<input type="hidden" name="meal_id" value="{{$meal->id}}">
 							</form>
@@ -114,12 +114,12 @@
 							</div>
 						</div>
 					</div>
-					  
 
 
+@if(!($reviews->isEmpty()))
 					@foreach ($reviews as $item)
-						
-					
+
+
 						<div class="backg-comment p-3 border rounded mb-2 border-0">
 							<div class="flex-w flex-sb-m p-b-1">
 								<span class="mtext-107 cl2 p-r-20 font-weight-bold">
@@ -129,27 +129,28 @@
 							</div>
 							<p class="stext-102 cl6">
 								{{$item->review_body}}
-							
+
 							</p>
 						</div>
 
 					@endforeach
+                      @endif
 				</div>
 
 
 				{{-- ///////////////////////////////////////////// --}}
-				
 
-          		
+
+
           	</div>
           </div> <!-- .col-md-8 -->
-          
-            
+
+
 
 		</div>
         </div>
       </div>
-    </section> 
+    </section>
 
 
     @endsection
