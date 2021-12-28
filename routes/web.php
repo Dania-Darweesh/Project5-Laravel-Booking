@@ -51,7 +51,7 @@ Route::get('/admin', function () {
         'auth_user'=>Auth::user(),
 
     ]);
-})->name('admin.dashboard')->middleware(' ');
+})->name('admin.dashboard')->middleware('admin.auth');
 
 
 
