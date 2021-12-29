@@ -24,6 +24,7 @@ class CreateRoomsTable extends Migration
             $table->boolean('status');
             $table->string('room_img');
             $table->text('room_description');
+            $table->boolean('AC')->nullable();
         });
     }
 

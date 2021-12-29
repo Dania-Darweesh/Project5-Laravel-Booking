@@ -41,17 +41,17 @@ class UserReservationController extends Controller
 
 
         /* dd($request->all());  */ // just to check data
-        $number_of_days=(strtotime($request->checkout_date)-(strtotime($request->checkin_date)))/(3600*24);
+        $number_of_days=(strtotime(session('checkout_date'))-(strtotime(session('checkin_date'))))/(3600*24);
 
 
 
       $reservation = new UserReservation();
-            $reservation->room_id     =  $request->room_id;
+            $reservation->room_id     = session('room_id');
             $reservation->user_id     =   Auth::user()->id;
-            $reservation->total_price  =   $request->total_price;
+            $reservation->total_price  =   session('total_price');
             $reservation->number_of_days = $number_of_days;
-            $reservation->checkin_date  =  $request->checkin_date;
-            $reservation->checkout_date = $request->checkout_date;
+            $reservation->checkin_date  =  session('checkin_date');
+            $reservation->checkout_date = session('checkout_date');
             $reservation->total_adults   = 2;
             $reservation->save();
 
@@ -59,7 +59,7 @@ class UserReservationController extends Controller
 
 
 
-        if($request->book){
+        if(session('book')){
             return view('pages.succeed');
         }
 

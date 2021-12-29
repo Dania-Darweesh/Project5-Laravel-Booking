@@ -55,6 +55,7 @@ class RoomController extends Controller
         $room->has_balcony          = $request->has_balcony ;
         $room->has_sea_view        = $request->has_sea_view ;
         $room->status               = $request->status  ;
+        $room->AC               = $request->AC ;
         $room->room_img             = $newImageName;
 
         //object from model / attribute name / request object from class request store the data from the form
@@ -158,6 +159,6 @@ class RoomController extends Controller
 
 
     }
-    
+
 
 }
