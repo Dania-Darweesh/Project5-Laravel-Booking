@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class room extends Model
 {
-    protected $fillable = ['category_name', 'number_of_beds','price','has_balcony', 'has_sea_view' , 'status' , 'room_img' ,'room_description'];
+    protected $fillable = ['category_name', 'number_of_beds','price','has_balcony', 'has_sea_view' , 'status' , 'room_img' ,'room_description','AC'];
 
 
 
@@ -16,7 +16,6 @@ class room extends Model
     {
 
 
-        
         return $this->belongsTo(Category::class);
     }
 

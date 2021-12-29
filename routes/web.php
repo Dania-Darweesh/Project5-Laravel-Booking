@@ -16,6 +16,7 @@ use App\Models\Meal;
 use App\Models\User;
 use App\Models\UserReservation;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Resource_;
@@ -64,7 +65,25 @@ Route::get('/allRooms', [RoomController::class,'show_all_available_rooms'])->nam
 Route::post('/rooms', [UserReservationController::class,'available_rooms'])->name('public.availableRooms');
 Route::get('/single-room',[RoomController::class,'single_rooms'])->name('public.singleRoom');
 //this route for booing
-Route::post('/book',[UserReservationController::class,'store'])->name('book_now')->middleware('auth');
+Route::post('/book',function(Request $request){
+    session('_previous')['url']="http://127.0.0.1:8000/single-room/bookR";
+
+    session([
+        'room_id'      =>$request->room_id,
+        'total_price'  =>$request->total_price,
+        'checkin_date' =>$request->checkin_date,
+        'checkout_date'=>$request->checkout_date,
+        'book'         =>$request->book,
+
+    ]) ;
+    return redirect('/bookR');
+
+
+
+})->name('book_now');
+Route::get('/bookR',[UserReservationController::class,'store'])->middleware('auth');
+
+
 
 
 
@@ -102,9 +121,10 @@ Route::get('/pages/rooms-single', function () {
     return view('pages.rooms-single');
 });
 
-Auth::routes();
+
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Auth::routes();
 Route::get('/', function(){
     return view('pages.index',[
         'categories'=>Category::all(),
