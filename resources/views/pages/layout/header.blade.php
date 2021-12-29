@@ -59,7 +59,9 @@
 	        <ul class="navbar-nav ml-auto">
 	          <li class="nav-item active"><a href="{{route('home')}}" class="nav-link">Home</a></li>
 	          <li class="nav-item"><a href="{{route('public.showAllRooms')}}" class="nav-link">Our Rooms</a></li>
+                @auth
             <li class="nav-item"><a href="{{route('userProfile.index')}}" class="nav-link">Profile</a></li>
+                @endauth
 
 	          <li class="nav-item"><a href="{{route('restaurant')}}" class="nav-link">Restaurant</a></li>
 	          <li class="nav-item" style="margin-top: 20px!important;">

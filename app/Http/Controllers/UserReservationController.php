@@ -120,6 +120,10 @@ class UserReservationController extends Controller
         $checkin=UserReservation::where('checkout_date','>=',"{$req->checkin_date}")
                                 ->where('checkin_date','<=',"{$req->checkin_date}")
                                 ->get("room_id");
+
+
+
+
         $availableRooms=room::whereNotIn('id',$checkin)->get();
         $availableRooms= $availableRooms->where('category_id',$req->category_id)
                                          ->where('number_of_beds',$req->number_of_beds);

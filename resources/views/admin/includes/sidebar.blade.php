@@ -2,8 +2,8 @@
 <div class="left-sidebar-pro">
     <nav id="sidebar" class="">
         <div class="sidebar-header">
-            <a href="{{route('admin.dashboard')}}"><img class="main-logo" src="{{asset('admin_styles/img/logo/logo.png')}}" alt="" /></a>
-            <strong><a href="{{route('admin.dashboard')}}"><img src="{{asset('admin_styles/img/logo/logosn.png')}}" alt="" /></a></strong>
+            <a href="{{route('admin.dashboard')}}"><img class="main-logo" src="{{asset('images/logo.png')}}" alt="" /></a>
+
         </div>
         <div class="left-custom-menu-adp-wrap comment-scrollbar">
             <nav class="sidebar-nav left-sidebar-menu-pro">
